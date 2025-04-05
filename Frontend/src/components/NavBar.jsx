@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Pets from "@mui/icons-material/Pets";
 import Mail from "@mui/icons-material/Mail";
 import Badge from "@mui/material/Badge";
@@ -17,6 +17,8 @@ import Avatar from '@mui/material/Avatar';
 
 
 function NavBar() {
+
+  const [open,setOpen]= useState(false)
   const StyledToolBar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -47,6 +49,8 @@ function NavBar() {
   
     
 //   }));
+
+
   return (
     <AppBar position="sticky">
       <StyledToolBar>
@@ -65,8 +69,8 @@ function NavBar() {
           <Badge badgeContent={4} color="error" >
             <Notifications/>
           </Badge>
-          <Avatar alt="Remy Sharp" src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" />
-          <Typography>Nilan</Typography>
+          <Avatar alt="Remy Sharp" src="https://t3.ftcdn.net/jpg/02/43/12/34/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg" onClick={e=>setOpen(true)} />
+          <Typography onClick={e=>setOpen(true)}>Nilan</Typography>
         </Icons>
         
       </StyledToolBar>
@@ -74,8 +78,8 @@ function NavBar() {
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         
-        open={true}
-        
+        open={open}
+        onClose={(e)=>setOpen(false)}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'right',
